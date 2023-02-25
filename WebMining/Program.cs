@@ -57,6 +57,12 @@ void Start() {
     }
 
     var invalidChars = System.IO.Path.GetInvalidFileNameChars();
+
+    if (!Directory.Exists("datas"))
+    {
+        Directory.CreateDirectory("datas");
+    }
+
     File.WriteAllText("datas/" + new string(tajuk.Where(m => !invalidChars.Contains(m)).ToArray<char>()) + ".json", JsonConvert.SerializeObject(jsons));
 
     Console.WriteLine("============ Proses Selesai =============");
